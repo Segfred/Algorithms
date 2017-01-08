@@ -15,7 +15,7 @@ void percodown(vector<Comparable> &vec, int i, int number)
     Comparable temp=vec[i];
     while(child<=number-1)//to ensure the left child is still within the heap
     {
-        if (child+1<=number-1&&vec[child]<vec[child+1])//to ensure the left child is still within the heap
+        if (child+1<=number-1&&vec[child]<vec[child+1])//to ensure the right child is still within the heap as well as to pick up the bigger one
             child++;
         if (temp<vec[child])
         {
