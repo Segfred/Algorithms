@@ -2,8 +2,8 @@
 //  main.cpp
 //  bitree
 //
-//  Created by Zhao Tianqi on 2016/12/14.
-//  Copyright © 2016年 Zhao Tianqi. All rights reserved.
+//  Created by Asmita on 2016/12/14.
+//  Copyright © 2016年 Asmita. All rights reserved.
 //
 
 #include <iostream>
