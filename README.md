@@ -1,2 +1,2 @@
 # Algorithms
-common data structures for job preparation
+common data structures implemented in C++ template
