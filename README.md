@@ -1,2 +1,2 @@
 # Algorithms
-common data structures for job preparation
+please ignore the bitree and see the bitree1 if you are interested
