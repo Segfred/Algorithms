@@ -1,2 +1,2 @@
 # Algorithms
-readily executable
+to be finished
