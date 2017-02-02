@@ -2,8 +2,8 @@
 //  main.cpp
 //  tree_test
 //
-//  Created by Zhao Tianqi on 2017/01/17.
-//  Copyright © 2017年 Zhao Tianqi. All rights reserved.
+//  Created by Asmita on 2017/01/17.
+//  Copyright © 2017年 Asmita. All rights reserved.
 //
 
 
