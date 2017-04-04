@@ -1,6 +1,5 @@
 //
 //  main.cpp
-//  known_dijkstra
 //
 //  Created by Asmita on 17/4/4.
 //  Copyright (c) 2017年 Asmita. All rights reserved.
