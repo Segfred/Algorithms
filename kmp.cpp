@@ -1,4 +1,4 @@
-//
+// http://www.cnblogs.com/c-cloud/p/3224788.html
 //  main.cpp
 //  kmp
 //
@@ -14,13 +14,13 @@ typedef string::size_type ssize;
 
 void makeNext(const string &patn, vector<int> &next)
 {
-    ssize len=patn.length();
-    int k=0;//k denotes the length of same prefix and suffix pair
-    for(ssize i=1;i<len;++i)//i must be from 1, NOT 0, otherwsie patn[0]=patn[0]
+    const ssize len=patn.length();
+    int k=0,i=0;//k denotes the length of same prefix and suffix pair
+    while( i<len)//i must be from 1, NOT 0, otherwsie patn[0]=patn[0]
     {
-        while(k>0&&patn[i]!=patn[k]) k=next[k-1];
-        if(patn[i]==patn[k]) ++k;//one more match found
-        next[i]=k;
+        if(patn[i]==patn[k]) next[i++]=++k;//one more match found
+        else if(k==0) ++i;
+        else k=next[k-1];
     }
     
 }
@@ -30,12 +30,14 @@ int kmp(const string &tgt, const string &pat)// return the matching position
     vector<int> next(pat.size(),0);
     makeNext(pat,next);
     const ssize plen=pat.length();
-    for(ssize i=0,j=0;i<tgt.length();++i)//j denotes the matched length
+    ssize i=0,j=0;
+    while(i<tgt.length())//j denotes the matched length,和for++不一样,那个是延迟加1
     {
-        while(j>0&&tgt[i]!=pat[j]) j=next[j-1];
-        if(tgt[i]==pat[j]) ++j;
-        if(j==plen) {cout<<"matched position is "<<i-plen+1<<endl;
-            return int(i-plen+1);
+        if(tgt[i]==pat[j]) ++j,++i;
+        else if(j==0) ++i;
+        else j=next[j-1];
+        if(j==plen) {cout<<"matched position is "<<i-plen<<endl;
+            return int(i-plen);
         }
     }
     
@@ -50,3 +52,4 @@ int main(int argc, const char * argv[]) {
     cout <<kmp(target,pattern)<<endl;
     return 0;
 }
+
