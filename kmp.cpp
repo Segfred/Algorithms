@@ -15,7 +15,7 @@ typedef string::size_type ssize;
 void makeNext(const string &patn, vector<int> &next)
 {
     const ssize len=patn.length();
-    int k=0,i=0;//k denotes the length of same prefix and suffix pair
+    int k=0,i=1;//k denotes the length of same prefix and suffix pair
     while( i<len)//i must be from 1, NOT 0, otherwsie patn[0]=patn[0]
     {
         if(patn[i]==patn[k]) next[i++]=++k;//one more match found
