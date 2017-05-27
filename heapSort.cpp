@@ -41,7 +41,7 @@ void heapsort(vector<Comparable> &vec)
     for (int j=vec.size()-1;j>0;--j)
     {
         swap(vec[0],vec[j]);
-        percodown(vec, 0, j);
+        percodown(vec, 0, j);//j是个数，取了第一个数确定之后只剩下vec.size()-1个数
     }
 }
 
