@@ -48,7 +48,7 @@ private:
     cost_type weight_;
     unordered_map<element, bool> known_;
     unordered_map<element, int> dist_;//distance to the source node
-    unordered_map<element, element> path_;//records the middle paths
+    unordered_map<element, element> path_;//records the middle paths by current node and previous node order
     
 };
 
