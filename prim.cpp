@@ -47,8 +47,8 @@ private:
     graph_type Adj_;
     cost_type weight_;
     unordered_map<element, bool> known_;
-    unordered_map<element, int> dist_;
-    unordered_map<element, element> path_;
+    unordered_map<element, int> dist_;//minimum distance to any known nodes
+    unordered_map<element, element> path_;//current node, previous node order
     vector<element> node_Known_; //to store the nodes known to be within the minimum spanning tree
     
 };
@@ -64,7 +64,7 @@ void Graph<element>::addEdge(const element& from, const element &to, int weight)
 }
 
 template<typename element>
-struct cmp{
+struct cmp{//min heap
     typedef pair<int,element> pie;
     bool operator ()(pie a,pie b){
         return a.first > b.first;
@@ -74,7 +74,7 @@ struct cmp{
 template<typename element>
 void Graph<element>::prim(const element &start)
 {
-    typedef pair<int,element> pie;
+    typedef pair<int,element> pie;//cost and node order
     priority_queue<pair<int,element>, vector<pair<int,element>>, cmp<element>> PQ;
     dist_[start] = 0;
     cout<<"push"<<start<<endl;
@@ -92,7 +92,7 @@ void Graph<element>::prim(const element &start)
                 {
                     int curCost = weight_[make_pair(deterNode, neighbor)];
                     if(dist_[neighbor] > curCost){ //different from dijktra, which is dist_[neighbor] >curCost+dist_[deterNode];
-                        dist_[neighbor] = curCost; //dist_[] stores the minimum edge
+                        dist_[neighbor] = curCost; //dist_[] stores the minimum cost
                         path_[neighbor]=deterNode;
                         cout<<"push"<<neighbor<<endl;
                         PQ.push(make_pair(dist_[neighbor],neighbor));
