@@ -1,9 +1,9 @@
-//
+//ElogV time complexity
 //  main.cpp
-//  known_dijkstra
+//  testPrim
 //
-//  Created by Asmita on 17/4/4.
-//  Copyright (c) 2017年 Asmita. All rights reserved.
+//  Created by Asmita on 2017/06/02.
+//  Copyright © 2017年 Asmita. All rights reserved.
 //
 
 #include <iostream>
@@ -49,7 +49,7 @@ private:
     unordered_map<element, bool> known_;
     unordered_map<element, int> dist_;//minimum distance to any known nodes
     unordered_map<element, element> path_;//current node, previous node order
-    vector<element> node_Known_; //to store the nodes known to be within the minimum spanning tree
+    //vector<element> node_Known_; //to store the nodes known to be within the minimum spanning tree
     
 };
 
@@ -58,8 +58,8 @@ void Graph<element>::addEdge(const element& from, const element &to, int weight)
 {
     Adj_[from].insert(to);
     Adj_[to].insert(from);
-    weight_.insert(make_pair(make_pair(to, from), weight) );//  weight_[{to, from}]= weight;
-    weight_.insert(make_pair(make_pair(from, to), weight) );//  weight_[{from, to}]= weight;
+    weight_[{to, from}]= weight;
+    weight_[{from, to}]= weight;
     dist_[from]=dist_[to]=MAXCOST;
 }
 
@@ -83,28 +83,23 @@ void Graph<element>::prim(const element &start)
         pie x = PQ.top();
         cout<<"pop"<<x.second<<endl;
         known_[x.second]=true;
-        node_Known_.push_back(x.second);
+        //node_Known_.push_back(x.second);
         PQ.pop();
-        for(auto const &deterNode:node_Known_)
-        {
-            for(auto const &neighbor :Adj_[deterNode]){
-                if(!known_[neighbor])
+
+            for(auto const &neighbor :Adj_[x.second]){//only need to judge on the new known nodes
+                int curCost = weight_[{x.second, neighbor}];
+                if(!known_[neighbor]&&dist_[neighbor]>curCost)
                 {
-                    int curCost = weight_[make_pair(deterNode, neighbor)];
-                    if(dist_[neighbor] > curCost){ //different from dijktra, which is dist_[neighbor] >curCost+dist_[deterNode];
+//different from dijktra, which is dist_[neighbor] >curCost+dist_[deterNode];
                         dist_[neighbor] = curCost; //dist_[] stores the minimum cost
-                        path_[neighbor]=deterNode;
+                        path_[neighbor]=x.second;
                         cout<<"push"<<neighbor<<endl;
-                        PQ.push(make_pair(dist_[neighbor],neighbor));//{dist,nei}
-                    }
-                    
+                        PQ.push({dist_[neighbor],neighbor});
                 }
             }
         }
-
-    }
-    
 }
+
 int main(int argc, const char * argv[]) {
     Graph<string> gra{};
     string v1="V1",v2="V2",v3="V3",v4="V4",v5="V5",v6="V6",v7="V7";
