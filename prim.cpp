@@ -58,8 +58,8 @@ void Graph<element>::addEdge(const element& from, const element &to, int weight)
 {
     Adj_[from].insert(to);
     Adj_[to].insert(from);
-    weight_.insert(make_pair(make_pair(to, from), weight) );
-    weight_.insert(make_pair(make_pair(from, to), weight) );
+    weight_.insert(make_pair(make_pair(to, from), weight) );//  weight_[{to, from}]= weight;
+    weight_.insert(make_pair(make_pair(from, to), weight) );//  weight_[{from, to}]= weight;
     dist_[from]=dist_[to]=MAXCOST;
 }
 
@@ -95,7 +95,7 @@ void Graph<element>::prim(const element &start)
                         dist_[neighbor] = curCost; //dist_[] stores the minimum cost
                         path_[neighbor]=deterNode;
                         cout<<"push"<<neighbor<<endl;
-                        PQ.push(make_pair(dist_[neighbor],neighbor));
+                        PQ.push(make_pair(dist_[neighbor],neighbor));//{dist,nei}
                     }
                     
                 }
