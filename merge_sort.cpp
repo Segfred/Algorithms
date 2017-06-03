@@ -25,8 +25,9 @@ void integrate(vector<Comparable> &vec, vector<Comparable> &target, size_t left,
     while (rbegin<=right)
         target[tindex++]=vec[rbegin++];
     --tindex;
-    for (int i=0;i<count;++i,--tindex)//right cannot be replaced by tindex
-        vec[tindex]=target[tindex];
+    for (int i=0;i<count;++i,--tindex)  vec[tindex]=target[tindex];
+        //right cannot be replaced by tindex
+       //不能写left到right,这时候left已经移动了
     //for(;int(tindex)>=0;--tindex)下面两种写法都是可以的
         //vec[tindex]=target[tindex];
     /*
