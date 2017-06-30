@@ -46,7 +46,7 @@ void Graph<element>::BFS(const element& start)
     {
         element cur=std::move(que.front());
         cout<<cur<<endl;
-        visited_[cur]=false;
+        visited_[cur]=true;
         que.pop();
 
             for(auto const &neighbor:Adj_[cur])
