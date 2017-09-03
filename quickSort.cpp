@@ -19,15 +19,11 @@ void quicksort(vector<Comparable> &vec, int left, int right)
         Comparable temp=vec[left];
         while (i<j)
         {
-            while (i<j&&vec[j]>=temp)
-                --j;
-            if (i<j)
-                vec[i++]=vec[j];
+            while (i<j&&vec[j]>=temp) --j;
+                vec[i]=vec[j];
             
-            while (i<j&&vec[i]<=temp)
-                ++i;
-            if (i<j)
-                vec[j--]=vec[i];
+            while (i<j&&vec[i]<=temp) ++i;
+                vec[j]=vec[i];
             
         }
         vec[i]=temp;
