@@ -1,4 +1,16 @@
-//
+//int binary_search(int *A, int C, int V) {
+	int left=0, right=C-1;  // 闭合空间
+  while(left<right){
+    int mid=left+(right-left>>1);
+    if(A[mid]<V) left=mid+1;
+    else right=mid;
+  }
+  if(A[left]==V) return left;
+  return -1;
+}
+l+1=r，且最终在l
+l+1=r，且最终在r
+l+2=r，且最终在l+1
 //  main.cpp
 //  biSearch
 //
