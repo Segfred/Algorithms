@@ -8,9 +8,11 @@
   if(A[left]==V) return left;
   return -1;
 }
+还有一个元素是否会发生死循环
 l+1=r，且最终在l
 l+1=r，且最终在r
 l+2=r，且最终在l+1
+	
 //  main.cpp
 //  biSearch
 //
