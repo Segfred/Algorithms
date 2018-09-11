@@ -38,7 +38,7 @@ template<typename Comparable>
 void heapsort(vector<Comparable> &vec)
 {
     buildheap(vec);
-    for (int j=vec.size()-1;j>0;--j)
+    for (int j=vec.size()-1;j>0;--j)//是最大堆，首先把最大的值放在最后，然后对剩下的元素进行排序
     {
         swap(vec[0],vec[j]);
         percodown(vec, 0, j);//j是个数，取了第一个数确定之后只剩下vec.size()-1个数
