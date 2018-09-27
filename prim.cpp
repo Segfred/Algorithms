@@ -47,7 +47,7 @@ private:
     graph_type Adj_;
     cost_type weight_;
     unordered_map<element, bool> known_;
-    unordered_map<element, int> dist_;//minimum distance to any known nodes
+    unordered_map<element, int> dist_;//minimum distance to any known nodes，和此顶点相连的最小边
     unordered_map<element, element> path_;//current node, previous node order
     //vector<element> node_Known_; //to store the nodes known to be within the minimum spanning tree
     
