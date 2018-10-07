@@ -26,7 +26,7 @@ bool dfs(int u)
     vis[u] = 1;
     stc.push(u); //放到结果数组里，输出的时候记得倒序输出，（回溯的原因）
     cout<<u<<" pushed"<<",";
-    return true;
+    return true;//本身这个点第一次访问，并且所有邻居节点出发都没遇到环，（邻居到不了这个节点），因此可以确定没环
 }
 
 bool toposort(int n)
