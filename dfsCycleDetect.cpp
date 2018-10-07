@@ -21,12 +21,12 @@ bool dfs(int u)
     {
         if(vis[neigh]==-1)//表示这个点进入了两次，肯定出现了环
             return false;
-        else if(!vis[neigh]&&!dfs(neigh)) return false;
+        else if(!vis[neigh]&&!dfs(neigh)) return false;//没访问过的节点才会进行dfs，因此每个节点只会访问一次
     }
     vis[u] = 1;
     stc.push(u); //放到结果数组里，输出的时候记得倒序输出，（回溯的原因）
     cout<<u<<" pushed"<<",";
-    return true;//本身这个点第一次访问，并且所有邻居节点出发都没遇到环，（邻居到不了这个节点），因此可以确定没环
+    return true;//本身这个点第一次访问，并且所有邻居节点出发都没遇到环，（邻居到不了这个节点，也到达不了任何回路），因此可以确定没环
 }
 
 bool toposort(int n)
