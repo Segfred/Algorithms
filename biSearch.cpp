@@ -31,7 +31,7 @@ INDEX myUpperBound(int *arr, int size, int target)
     while(left<=right)
     {
         int mid=left+((right-left)>>1);
-        if(arr[mid]<=target) left=mid+1;
+        if(arr[mid]<=target) left=mid+1;//第一个大于target的数，<=永远不会翻车，那就返回left
         else right=mid-1;
     }
     return left;
@@ -42,9 +42,9 @@ INDEX myLowerBound(int *arr, int size, int target)
     while(left<=right)
     {
         int mid=left+((right-left)>>1);
-        if(arr[mid]<target) left=mid+1;
-        else right=mid-1;
-    }
+        if(arr[mid]<target) left=mid+1;//记忆方法是<才加，left永远不会翻车，那就返回left
+        else right=mid-1;//没事，如果跨过去的话left还能再跳回去，可以用1，2，3查找1来看，最后left=1,right=0,所以返回left
+    }//这样的好处是格式统一，就变了个等号，右边翻过去了那就取左边的值
     return left;
 }
 
@@ -60,6 +60,7 @@ INDEX lastElement(int *arr, int size, int target)
         else left=mid+1;
     }
     return right;//这个时候就一定要返回right,不能是left,因为是从右向左的大方向
+	//比较简单的做法就是left可能翻车了，会翻过去<=target，left可能是最后一个满足的，既然left翻车了那就右边
 }
 
 int main(int argc, const char * argv[]) {
