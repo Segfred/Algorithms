@@ -56,8 +56,8 @@ INDEX lastElement(int *arr, int size, int target)
     while(left<=right)
     {
         int mid=left+((right-left)>>1);
-        if(arr[mid]>target) right=mid-1;
-        else left=mid+1;
+        if(arr[mid]>target) right=mid-1;//不符合的话就大胆往前走，right不会超
+        else left=mid+1;//符合的话left可能超，没关系这时候取right，因为right永远不会超
     }
     return right;//这个时候就一定要返回right,不能是left,因为是从右向左的大方向
 	//比较简单的做法就是left可能翻车了，会翻过去<=target，left可能是最后一个满足的，既然left翻车了那就右边
