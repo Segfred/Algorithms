@@ -5,6 +5,8 @@
 //  Created by Asmita on 17/4/3.
 //  Copyright (c) 2017年 Asmita. All rights reserved.
 //
+//狄杰斯特拉的特点在于每次的最小值必定都是从已知的最短路径连接过去的，可能是之前找到的最短路径一直没排上号，也可能是上一次才刚刚发现的最短路径
+
 
 #include <iostream>
 #include <vector>
