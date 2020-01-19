@@ -36,6 +36,7 @@ INDEX myUpperBound(int *arr, int size, int target)
     }
     return left;
 }
+//如果right不往前退的话可能0,0一个数没有变化，所以是有问题的
 INDEX myLowerBound(int *arr, int size, int target)
 {
     int left=0,right=size-1;
