@@ -86,6 +86,7 @@ void Graph<element>::dijkstra(const element &start)
     while(!PQ.empty()){
         pie x = PQ.top();
         cout<<"pop"<<x.second<<endl;
+        if (known_[x.second]) continue;//已经知道没必要再遍历，97行dist只可能变小，所以不会再次更新或者入队列
         known_[x.second]=true;
         PQ.pop();
         //if(x.first>dist_[x.second]) continue;
